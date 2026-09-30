@@ -1,0 +1,29 @@
+# dependencies
+node_modules/
+
+# runtime data (SQLite database, WAL files and the session signing secret)
+data/
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+secret.key
+
+# builds
+web/dist/
+dist/
+build/
+
+# environment
+.env
+.env.*
+!.env.example
+
+# logs & editor noise
+*.log
+npm-debug.log*
+.DS_Store
+.idea/
+.vscode/
+coverage/
+.arena/
