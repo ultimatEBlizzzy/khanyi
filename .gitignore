@@ -27,3 +27,6 @@ npm-debug.log*
 .vscode/
 coverage/
 .arena/
+
+# typescript incremental build cache
+*.tsbuildinfo
