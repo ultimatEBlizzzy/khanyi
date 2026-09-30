@@ -44,9 +44,11 @@ export default function BasketDrawer() {
         setPromoCode('');
         return;
       }
-      await api.get<{ promo: { code: string } }>(`/api/orders/promo/${encodeURIComponent(code)}`, {
-        signal: undefined,
-      });
+      // Send the basket value so the server can check the minimum spend.
+      const subtotal = quote?.subtotal ?? lines.reduce((sum, line) => sum + line.previewUnitPrice * line.qty, 0);
+      await api.get<{ promo: { code: string } }>(
+        `/api/orders/promo/${encodeURIComponent(code)}?subtotal=${subtotal}`,
+      );
       setPromoCode(code);
       setPromoFeedback(`Code ${code} applied`);
     } catch (error) {
